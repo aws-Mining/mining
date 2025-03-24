@@ -46,7 +46,7 @@ check_status(){
   fi
 }
 set_systemd(){
-    sudo wget -O /etc/systemd/system/ https://raw.githubusercontent.com/aws-Mining/mining/refs/heads/main/xmrig.service
+    sudo wget -O /etc/systemd/system/xmrig.service https://raw.githubusercontent.com/aws-Mining/mining/refs/heads/main/xmrig.service
     systemctl daemon-reload #
     sudo systemctl enable xmrig #
 }
@@ -55,7 +55,7 @@ check_xmrig_file(){
   if [ -f "/etc/xmrig/xmrig" ]; then
     echo "File already exists"
   else
-    download_xmrig()
+    download_xmrig
   fi
 }
 
@@ -63,7 +63,7 @@ check_service_file(){
   if [ -f "/etc/systemd/system/xmrig.service" ]; then
     echo "File already exists"
   else
-    set_systemd()
+    set_systemd
   fi
 }
 set_config(){
@@ -72,9 +72,9 @@ set_config(){
   jq --arg user "$user" --arg name "$name" '.pools[0].user = $user | .pools[0].pass = $name' /etc/xmrig/config.json > tmp.json && mv tmp.json /etc/xmrig/config.json
 }
 run(){
-  check_file()
-  check_service_file()
-  set_config()
-  check_status()
+  check_xmrig_file
+  check_service_file
+  set_config
+  check_status
 }
-run()
+run
