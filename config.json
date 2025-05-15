@@ -11,7 +11,7 @@
     },
     "pools": [
         {
-            "algo": "rx/0"
+            "algo": "rx/0",
             "url": "pool.supportxmr.com:5555",
             "user": "4AoMksz7Vb2daZLCrLdWQ3PE62J3XASk18q16axzss7ZgpEbkVdVoYZXyUjcuZ6kvZHh5uBEu3oaSLU6QtkwhxYQCPXmS8h",
             "pass": "test",
