@@ -30,7 +30,7 @@ if [[ -z "$user" ]]; then
   user='4AoMksz7Vb2daZLCrLdWQ3PE62J3XASk18q16axzss7ZgpEbkVdVoYZXyUjcuZ6kvZHh5uBEu3oaSLU6QtkwhxYQCPXmS8h'
 fi
 if [[ -z "$pool" ]]; then
-  user='pool.supportxmr.com:5555'
+  pool='pool.supportxmr.com:5555'
 fi
 
 download_xmrig(){
@@ -75,7 +75,7 @@ check_service_file(){
 set_config(){
   sudo rm /etc/xmrig/config.json
   sudo wget -O /etc/xmrig/config.json https://raw.githubusercontent.com/aws-Mining/mining/refs/heads/main/config.json
-  jq --arg user "$user" --arg name "$name" --arg pool="$pool" '.pools[0].user = $user | .pools[0].pass = $name |.pools[0].url=$pool' /etc/xmrig/config.json > tmp.json && mv tmp.json /etc/xmrig/config.json
+  jq --arg user "$user" --arg name "$name" --arg pool "$pool" '.pools[0].user = $user | .pools[0].pass = $name | .pools[0].url=$pool' /etc/xmrig/config.json > tmp.json && mv tmp.json /etc/xmrig/config.json
 }
 run(){
   check_xmrig_file
