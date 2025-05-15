@@ -18,6 +18,5 @@
             "keepalive": true,
             "tls": false
         }
-    ],
-    
+    ]
 }
